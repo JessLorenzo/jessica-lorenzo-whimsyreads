@@ -46,27 +46,39 @@ Book selection
 Display event date/location
 Poll creation
 
-LIKE-TO-HAVES: Club Members User Story
-Can create a personalized user profile with favorite genres, a bio, and displays the book clubs they have joined.
-Can browse and request to join public or private book clubs.
-Are automatically assigned to a chapter upon joining a book club (with possible updates by organizers).
-Can view current and past book picks for their club(s).
-Can RSVP to meetings and events at the club or chapter level and receive reminders.
-Can vote in polls for upcoming book selections.
-Can participate in discussions both at the club-wide level and within their chapter.
-Can submit book reviews and rate books the club has read.
-Can upload photos from events and view shared media from others.
-Can receive notifications for club or chapter activities, replies, and announcements.
-
-Future Additions:
-Member accounts & login
-Voting
-Discussions
-Photo uploads
-Notifications
-Personalized member profiles
-
 ## Implementation
+
+Key Components of Implementation:
+
+1. Frontend Development (React + JavaScript + CSS/Sass)
+   Structure the user interface using modular React components
+   Manage state and user interactions using React hooks and context where needed
+   Style the application with custom CSS and Sass to create a unique, whimsical look and ensure responsive design
+   Build user-facing pages and components for book club profiles, announcements, meeting details, etc.
+   Handle API calls and display dynamic content from the backend
+
+2. Backend Development (Node.js + Express)
+   Build a RESTful API to manage users, book clubs, books, reviews, and meetings
+   Implement secure authentication using JWT or session-based login
+   Organize backend logic into routes, controllers, and services for maintainability
+
+3. Database (SQL)
+   Design a relational schema with normalized tables for users, clubs, books, reviews, and meetings
+   Implement foreign key relationships and indexes for efficient querying
+
+4. Core Feature Implementation
+   User authentication (signup, login, logout)
+   Profile creation and editing
+   Book club creation and joining
+   Display and update the “Book of the Month” for each club
+   Add and display book reviews and star ratings
+   Meeting info input and display (date, time, location or virtual link)
+
+5. Testing & Deployment
+   Conduct manual testing across features and devices
+   Debug and refine UI/UX for consistency and performance
+   Deploy the backend and frontend using services like Render, Netlify, or Vercel
+   Write setup instructions and documentation for running the app locally and in production
 
 ### Tech Stack
 
@@ -355,8 +367,51 @@ Example Response:
 
 Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date.
 
----
+🚀 Sprint 1: Planning & Core Setup (March 24 – March 28)
+Finalize feature list and define MVP
+Design wireframes and data models
+Set up GitHub repo
+Initialize frontend and backend environments
+Build core backend models: users, clubs, books, reviews
+Set up routing and layout structure on the frontend
+Begin applying base styles using CSS/Sass
+
+🔧 Sprint 2: Feature Development (March 29 – April 2)
+Implement user authentication (signup/login)
+Build profile creation and editing
+Add functionality to create/join book clubs
+Implement “Book of the Month” and meeting info features
+Enable book reviews and ratings
+Connect frontend to backend APIs
+Continue styling UI with custom CSS/Sass
+Ensure responsive design
+
+✅ Sprint 3: Testing, Polish & Presentation (April 3 – April 6)
+Conduct testing (manual and/or user testing)
+Debug and refine key features
+Polish frontend styles and improve UX
+Deploy the app
 
 ## Future Implementations
 
 Your project will be marked based on what you committed to in the above document. Here, you can list any additional features you may complete after the MVP of your application is built, or if you have extra time before the Capstone due date.
+
+LIKE-TO-HAVES: Club Members User Story
+Can create a personalized user profile with favorite genres, a bio, and displays the book clubs they have joined.
+Can browse and request to join public or private book clubs.
+Are automatically assigned to a chapter upon joining a book club (with possible updates by organizers).
+Can view current and past book picks for their club(s).
+Can RSVP to meetings and events at the club or chapter level and receive reminders.
+Can vote in polls for upcoming book selections.
+Can participate in discussions both at the club-wide level and within their chapter.
+Can submit book reviews and rate books the club has read.
+Can upload photos from events and view shared media from others.
+Can receive notifications for club or chapter activities, replies, and announcements.
+
+Future Additions:
+Member accounts & login
+Voting
+Discussions
+Photo uploads
+Notifications
+Personalized member profiles
