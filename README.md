@@ -90,7 +90,7 @@ Development Tools
 Postman – For testing API endpoints.
 Git + GitHub
 
-~Potential Limitations~
+Potential Limitations
 Image Uploads (Cloudinary/Firebase) require user authentication and handling file size limits. Its also new to me so would require time to learn how to use it.
 Role-Based Access Control (RBAC) can add complexity—especially with multiple roles like organizer, member, and admin.
 
@@ -163,13 +163,13 @@ v
 
 Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.
 
-You can view the mockups in this [PDF file](assets/mockups/Mockups Whimsy Reads.pdf).
+You can view the mockups in this [PDF file](assets/mockups/Mockups Whimsy Reads.pdf)
 
 ### Data
 
 Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out.
 
-~Data Model~
+Data Model
 
 User:
 Users can be club organizers or members.
