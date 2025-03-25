@@ -163,6 +163,8 @@ v
 
 Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.
 
+You can view the mockups in this [PDF file](assets/mockups/Mockups Whimsy Reads.pdf).
+
 ### Data
 
 Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out.
