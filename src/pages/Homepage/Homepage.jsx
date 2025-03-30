@@ -1,5 +1,6 @@
 import "./Homepage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
+import Button from "../../components/Button/Button.jsx";
 import BookImage from "../../assets/image/hand-book.png";
 import BookWindowImage from "../../assets/image/book-windows.png";
 
@@ -11,9 +12,10 @@ function Homepage() {
         <div className="main__slogan">
           <div className="main__text">
             <h1 className="main__headline">A Cozy Corner For Your Book Club</h1>
-            <p className="main__subtext">
-              Create a profile for your book club on Whimsy Reads
-            </p>
+            <span className="main__subtext">
+              Create a profile to manage your book club on Whimsy Reads
+            </span>
+            <Button onClick={() => navigate("/")}>Get Started</Button>
           </div>
           <img src={BookImage} alt="book stack" className="main__image" />
         </div>

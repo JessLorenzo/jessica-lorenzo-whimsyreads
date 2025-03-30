@@ -11,7 +11,7 @@
   background-color: $orange;
   background-blend-mode: lighten;
   padding: 2rem;
-  padding-top: 13rem;
+  padding-top: 11rem;
 
   @include tablet {
     padding-top: 9rem;
@@ -69,12 +69,18 @@
   }
 
   &__subtext {
-    font-size: 1.125rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
     color: white;
     line-height: 1.6;
     font-family: "Urbanist";
-    font-style: italic;
     width: 50%;
+    gap: 2rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &__image {
