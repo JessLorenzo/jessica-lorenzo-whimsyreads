@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   position: fixed;
+  top: 0;
   width: 100%;
   padding: 1.5rem 3rem;
   background: transparent;
@@ -69,5 +70,12 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+
+    &--login {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: white;
+    }
   }
 }

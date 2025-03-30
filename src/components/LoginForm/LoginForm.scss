@@ -1,0 +1,73 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  gap: 1rem;
+  font-family: "Urbanist", serif;
+
+  &__title {
+    text-align: center;
+    color: $dark-purple;
+    margin-bottom: 1rem;
+  }
+
+  label {
+    font-weight: 600;
+    color: $orange;
+  }
+
+  input {
+    padding: 0.75rem 1rem;
+    border: 1px solid $light-orange;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: $dark-orange;
+      box-shadow: 0 0 0 2px rgba($dark-orange, 0.2);
+    }
+  }
+
+  &__button {
+    margin-top: 1rem;
+    background-color: $dark-orange;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $orange;
+      box-shadow: 0 4px 12px rgba($orange, 0.3);
+    }
+  }
+
+  &__signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark-purple;
+    gap: 6px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    color: $dark-purple;
+  }
+}

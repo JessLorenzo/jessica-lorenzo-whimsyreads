@@ -4,9 +4,11 @@
 
 .button {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   list-style-type: none;
+  cursor: pointer;
   font-weight: 600;
   color: white;
   padding: 6px 30px;
