@@ -1,0 +1,74 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  background: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  align-items: center;
+  gap: 2.5rem;
+  backdrop-filter: blur(8px);
+  font-family: "Urbanist", serif;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    gap: 1rem;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__title {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-family: "Pacifico", cursive;
+
+    &:hover {
+      transform: scale(1.05);
+      color: $dark-orange;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    @include tablet {
+      font-size: 2rem;
+    }
+
+    @include desktop {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__icon {
+    width: 3rem;
+
+    @include tablet {
+      width: 4rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
