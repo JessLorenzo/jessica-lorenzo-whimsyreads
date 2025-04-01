@@ -1,0 +1,62 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.edit-profile-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 8rem;
+  font-family: "Urbanist";
+
+  h2 {
+    text-align: center;
+    color: $royal-purple;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  label {
+    font-weight: bold;
+    color: $royal-purple;
+    margin-top: 0.5rem;
+  }
+
+  button {
+    background-color: $orange;
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $dark-orange;
+    }
+  }
+}
+
+.form-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}

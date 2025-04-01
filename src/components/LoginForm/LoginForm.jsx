@@ -1,9 +1,10 @@
 import "./LoginForm.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const isLoginpage = location.pathname === "/Login";
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -20,17 +21,22 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Logging in with:", formData);
+    console.log(
+      isLoginpage ? "Logging in with:" : "Signing up with:",
+      formData
+    );
     // Add API call or auth logic here
+
+    if (!isLoginpage) {
+      navigate("/editprofile");
+    }
   };
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      {isLoginpage ? (
-        <h2 className="login-form__title">Welcome Back!</h2>
-      ) : (
-        <h2 className="login-form__title">Create your account</h2>
-      )}
+      <h2 className="login-form__title">
+        {isLoginpage ? "Welcome Back!" : "Create your account"}
+      </h2>
 
       <label htmlFor="email">Email</label>
       <input
@@ -52,30 +58,20 @@ export default function LoginForm() {
         required
       />
 
-      {isLoginpage ? (
-        <button type="submit" className="login-form__button">
-          Log In
-        </button>
-      ) : (
-        <button type="submit" className="login-form__button">
-          Sign Up
-        </button>
-      )}
-      {isLoginpage ? (
-        <div className="login-form__signup">
-          <p>Don't have an account?</p>
-          <Link to="/Signup" className="login-form__link">
-            Sign up
-          </Link>
-        </div>
-      ) : (
-        <div className="login-form__signup">
-          <p>Already have an account?</p>
-          <Link to="/Login" className="login-form__link">
-            Login
-          </Link>
-        </div>
-      )}
+      <button type="submit" className="login-form__button">
+        {isLoginpage ? "Log In" : "Sign Up"}
+      </button>
+      <div className="login-form__signup">
+        <p>
+          {isLoginpage ? "Don't have an account?" : "Already have an account?"}
+        </p>
+        <Link
+          to={isLoginpage ? "/Signup" : "/Login"}
+          className="login-form__link"
+        >
+          {isLoginpage ? "Sign up" : "Login"}
+        </Link>
+      </div>
     </form>
   );
 }

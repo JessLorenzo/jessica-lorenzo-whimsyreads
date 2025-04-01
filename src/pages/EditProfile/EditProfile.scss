@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-profile {
+  background-image: url(src/assets/image/orange-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $orange;
+  background-blend-mode: lighten;
+  min-height: 100vh;
+  padding-top: 8rem;
+}
