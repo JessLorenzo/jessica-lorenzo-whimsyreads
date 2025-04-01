@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function LoginForm() {
+  const isLoginpage = location.pathname === "/Login";
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,7 +26,11 @@ export default function LoginForm() {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <h2 className="login-form__title">Welcome Back!</h2>
+      {isLoginpage ? (
+        <h2 className="login-form__title">Welcome Back!</h2>
+      ) : (
+        <h2 className="login-form__title">Create your account</h2>
+      )}
 
       <label htmlFor="email">Email</label>
       <input
@@ -46,15 +52,30 @@ export default function LoginForm() {
         required
       />
 
-      <button type="submit" className="login-form__button">
-        Log In
-      </button>
-      <div className="login-form__signup">
-        <p>Don't have an account?</p>
-        <Link to="/" className="login-form__link">
-          Sign up
-        </Link>
-      </div>
+      {isLoginpage ? (
+        <button type="submit" className="login-form__button">
+          Log In
+        </button>
+      ) : (
+        <button type="submit" className="login-form__button">
+          Sign Up
+        </button>
+      )}
+      {isLoginpage ? (
+        <div className="login-form__signup">
+          <p>Don't have an account?</p>
+          <Link to="/Signup" className="login-form__link">
+            Sign up
+          </Link>
+        </div>
+      ) : (
+        <div className="login-form__signup">
+          <p>Already have an account?</p>
+          <Link to="/Login" className="login-form__link">
+            Login
+          </Link>
+        </div>
+      )}
     </form>
   );
 }
