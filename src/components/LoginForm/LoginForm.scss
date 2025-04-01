@@ -17,7 +17,7 @@
 
   &__title {
     text-align: center;
-    color: $dark-purple;
+    color: rgb(184, 9, 184);
     margin-bottom: 1rem;
   }
 
@@ -29,7 +29,7 @@
   input {
     padding: 0.75rem 1rem;
     border: 1px solid $light-orange;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     font-size: 1rem;
 
     &:focus {
@@ -46,7 +46,7 @@
     font-weight: 600;
     padding: 0.75rem;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
 

@@ -1,10 +1,12 @@
 import "./Homepage.scss";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Button from "../../components/Button/Button.jsx";
 import BookImage from "../../assets/image/hand-book.png";
 import BookWindowImage from "../../assets/image/book-windows.png";
 
 function Homepage() {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
@@ -15,7 +17,7 @@ function Homepage() {
             <span className="main__subtext">
               Create a profile to manage your book club on Whimsy Reads
             </span>
-            <Button onClick={() => navigate("/")}>Get Started</Button>
+            <Button onClick={() => navigate("/Signup")}>Get Started</Button>
           </div>
           <img src={BookImage} alt="book stack" className="main__image" />
         </div>

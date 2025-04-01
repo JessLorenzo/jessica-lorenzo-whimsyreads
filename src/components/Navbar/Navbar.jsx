@@ -14,7 +14,7 @@ export default function Navbar() {
       </Link>
       {isHomepage ? (
         <div className="nav__buttons">
-          <Button onClick={() => navigate("/")}>JOIN NOW</Button>
+          <Button onClick={() => navigate("/Signup")}>JOIN NOW</Button>
           <Button onClick={() => navigate("/Login")}>LOGIN</Button>
         </div>
       ) : (
