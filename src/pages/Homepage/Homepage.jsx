@@ -17,7 +17,7 @@ function Homepage() {
             <span className="main__subtext">
               Create a profile to manage your book club on Whimsy Reads
             </span>
-            <Button onClick={() => navigate("/Signup")}>Get Started</Button>
+            <Button onClick={() => navigate("/signup")}>Get Started</Button>
           </div>
           <img src={BookImage} alt="book stack" className="main__image" />
         </div>
