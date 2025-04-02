@@ -51,16 +51,28 @@ export default function EditProfileForm() {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+
+      const firstErrorField = document.querySelector(
+        `[name="${Object.keys(validationErrors)[0]}"]`
+      );
+      if (firstErrorField) {
+        firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+        firstErrorField.focus();
+      }
+
       return;
     }
 
+    setErrors({});
     console.log("Profile Submitted:", formData);
     // Submit the form data to your backend here
   };
 
   return (
     <form className="edit-profile-form" onSubmit={handleSubmit}>
-      <h2>Edit Your Book Club Profile</h2>
+      <h2 className="edit-profile-form__title">
+        Create Your Book Club Profile
+      </h2>
       <input
         type="text"
         name="firstName"
@@ -70,7 +82,7 @@ export default function EditProfileForm() {
         required
       />
       {errors.firstName && (
-        <span className="form-error">{errors.firstName}</span>
+        <span className="edit-profile-form__error">{errors.firstName}</span>
       )}
 
       <input
@@ -81,7 +93,9 @@ export default function EditProfileForm() {
         value={formData.lastName}
         required
       />
-      {errors.lastName && <span className="form-error">{errors.lastName}</span>}
+      {errors.lastName && (
+        <span className="edit-profile-form__error">{errors.lastName}</span>
+      )}
 
       <input
         type="text"
@@ -91,17 +105,22 @@ export default function EditProfileForm() {
         value={formData.clubName}
         required
       />
-      {errors.clubName && <span className="form-error">{errors.clubName}</span>}
+      {errors.clubName && (
+        <span className="edit-profile-form__error">{errors.clubName}</span>
+      )}
 
       <input
         type="text"
         name="location"
         placeholder="Book Club Location"
+        value={formData.location}
         onChange={handleChange}
         required
       />
 
-      <label>Meeting Type:</label>
+      <label className="edit-profile-form__label" htmlFor="meetingType">
+        Meeting Type:
+      </label>
       <select
         name="meetingType"
         onChange={handleChange}
@@ -116,11 +135,14 @@ export default function EditProfileForm() {
         type="number"
         name="chapters"
         placeholder="Number of Chapters"
+        value={formData.chapters}
         onChange={handleChange}
         required
       />
 
-      <label>Meeting Frequency:</label>
+      <label className="edit-profile-form__label" htmlFor="meetingFrequency">
+        Meeting Frequency:
+      </label>
       <select
         name="frequency"
         onChange={handleChange}
@@ -133,7 +155,8 @@ export default function EditProfileForm() {
 
       <textarea
         name="description"
-        placeholder="Book Club Description"
+        placeholder="Description"
+        value={formData.description}
         onChange={handleChange}
         required
       />
@@ -145,7 +168,9 @@ export default function EditProfileForm() {
         onChange={handleChange}
       />
 
-      <label>Upload Profile Photo:</label>
+      <label className="edit-profile-form__label" htmlFor="uploadPhoto">
+        Upload Profile Photo:
+      </label>
       <input
         type="file"
         name="profilePhoto"
@@ -153,7 +178,9 @@ export default function EditProfileForm() {
         onChange={handleChange}
       />
 
-      <label>Visibility:</label>
+      <label className="edit-profile-form__label" htmlFor="visibility">
+        Visibility:
+      </label>
       <select
         name="visibility"
         onChange={handleChange}

@@ -1,0 +1,52 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.club-profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  padding-top: 8rem;
+
+  .club-tabs {
+    margin-top: 2rem;
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 2px solid $profile-purple2;
+
+      button {
+        background: none;
+        border: none;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: $profile-blue;
+        transition: border-color 0.3s ease, color 0.3s ease;
+
+        &.active {
+          color: $profile-purple;
+          border-bottom: 3px solid $profile-purple;
+        }
+
+        &:hover {
+          color: $profile-purple2;
+        }
+
+        &:focus {
+          outline: 2px solid $profile-blue;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .tab-content {
+      padding: 2rem 0;
+      background-color: $profile-nude;
+      border-radius: 0 0 16px 16px;
+      color: #333;
+    }
+  }
+}

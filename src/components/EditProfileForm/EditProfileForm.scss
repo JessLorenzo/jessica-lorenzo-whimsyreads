@@ -4,15 +4,18 @@
 @use "sass:color";
 
 .edit-profile-form {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-bottom: 8rem;
+  margin-bottom: 8rem;
   font-family: "Urbanist";
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  border-radius: 10px;
 
-  h2 {
+  &__title {
     text-align: center;
     color: $royal-purple;
   }
@@ -32,7 +35,14 @@
     resize: vertical;
   }
 
-  label {
+  &__error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__label {
     font-weight: bold;
     color: $royal-purple;
     margin-top: 0.5rem;
@@ -52,11 +62,4 @@
       background-color: $dark-orange;
     }
   }
-}
-
-.form-error {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: -0.5rem;
-  margin-bottom: 0.5rem;
 }
