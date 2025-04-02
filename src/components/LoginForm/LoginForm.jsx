@@ -66,7 +66,7 @@ export default function LoginForm() {
           {isLoginpage ? "Don't have an account?" : "Already have an account?"}
         </p>
         <Link
-          to={isLoginpage ? "/Signup" : "/Login"}
+          to={isLoginpage ? "/signup" : "/login"}
           className="login-form__link"
         >
           {isLoginpage ? "Sign up" : "Login"}
