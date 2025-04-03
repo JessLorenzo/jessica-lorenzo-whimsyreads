@@ -4,9 +4,16 @@
 
 .edit-profile {
   background-size: cover;
+  background: linear-gradient(
+    180deg,
+    $dark-purple,
+    $purple,
+    $light-orange,
+    $dark-orange
+  );
   background-repeat: no-repeat;
   background-position: center;
   background-blend-mode: lighten;
   min-height: 100vh;
-  padding-top: 10rem;
+  padding: 10rem 0;
 }
