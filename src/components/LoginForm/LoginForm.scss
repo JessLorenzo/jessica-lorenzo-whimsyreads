@@ -9,10 +9,10 @@
   max-width: 400px;
   margin: 4rem auto;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  gap: 1rem;
+  gap: 0.5rem;
   font-family: "Urbanist", serif;
 
   &__title {
@@ -27,7 +27,7 @@
   }
 
   input {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     border: 1px solid $light-orange;
     border-radius: 1.5rem;
     font-size: 1rem;
@@ -40,20 +40,9 @@
   }
 
   &__button {
-    margin-top: 1rem;
-    background-color: $dark-orange;
-    color: white;
-    font-weight: 600;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 1.5rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: $orange;
-      box-shadow: 0 4px 12px rgba($orange, 0.3);
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__signup {

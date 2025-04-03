@@ -2,6 +2,7 @@ import "./LoginForm.scss";
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Button from "../Button/Button.jsx";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -109,10 +110,9 @@ export default function LoginForm() {
         onChange={handleChange}
         required
       />
-
-      <button type="submit" className="login-form__button">
-        {isLoginpage ? "Log In" : "Sign Up"}
-      </button>
+      <div className="login-form__button">
+        <Button type="submit">{isLoginpage ? "Log In" : "Sign Up"}</Button>
+      </div>
       <div className="login-form__signup">
         <p>
           {isLoginpage ? "Don't have an account?" : "Already have an account?"}

@@ -1,5 +1,6 @@
 import "./EditProfileForm.scss";
 import { useState } from "react";
+import Button from "../Button/Button.jsx";
 
 export default function EditProfileForm() {
   const [formData, setFormData] = useState({
@@ -189,8 +190,9 @@ export default function EditProfileForm() {
         <option>Public</option>
         <option>Private</option>
       </select>
-
-      <button type="submit">Save Profile</button>
+      <div className="edit-profile-form__button">
+        <Button type="submit">Save Profile</Button>
+      </div>
     </form>
   );
 }
