@@ -1,24 +1,30 @@
 import "./EditProfileForm.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../Button/Button.jsx";
 
-export default function EditProfileForm() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    clubName: "",
-    location: "",
-    meetingType: "In-Person",
-    chapters: "1",
-    frequency: "Monthly",
-    description: "",
-    visibility: "Public",
-    genres: [],
-    website: "",
-    profilePhoto: null,
-  });
-
+export default function EditProfileForm({ userData }) {
+  const [formData, setFormData] = useState(null);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (userData) {
+      setFormData({
+        firstName: userData.first_name || "",
+        lastName: userData.last_name || "",
+        email: userData.email || "",
+        clubName: "",
+        location: "",
+        meetingType: "In-Person",
+        chapters: "1",
+        frequency: "Monthly",
+        description: "",
+        visibility: "Public",
+        genres: [],
+        website: "",
+        profilePhoto: null,
+      });
+    }
+  }, [userData]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -68,6 +74,7 @@ export default function EditProfileForm() {
     console.log("Profile Submitted:", formData);
     // Submit the form data to your backend here
   };
+  if (!formData) return <p>Loading profile...</p>;
 
   return (
     <form className="edit-profile-form" onSubmit={handleSubmit}>
@@ -97,7 +104,14 @@ export default function EditProfileForm() {
       {errors.lastName && (
         <span className="edit-profile-form__error">{errors.lastName}</span>
       )}
-
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+        value={formData.email}
+        required
+      />
       <input
         type="text"
         name="clubName"

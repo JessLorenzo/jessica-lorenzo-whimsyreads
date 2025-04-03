@@ -49,6 +49,9 @@ export default function LoginForm() {
     } else {
       try {
         const res = await axios.post(`${baseUrl}/api/users/signup`, formData);
+        const userId = res.data.user_id;
+        localStorage.setItem("userId", userId);
+        console.log("Saved user ID to localStorage:", userId);
         setMessage("Signup successful!");
         navigate("/editprofile");
       } catch (err) {

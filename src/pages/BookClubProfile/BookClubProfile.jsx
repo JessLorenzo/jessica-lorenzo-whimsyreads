@@ -4,6 +4,7 @@ import "./BookClubProfile.scss";
 import profilePhoto from "../../assets/image/bookclub_photo.png";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Chapters from "../../components/Chapters/Chapters.jsx";
+import BookPoll from "../../components/BookPoll/BookPoll.jsx";
 
 export default function BookClubProfile() {
   const [activeTab, setActiveTab] = useState("chapters");
@@ -48,7 +49,7 @@ export default function BookClubProfile() {
           />
         );
       case "polls":
-        return <p>BOTM voting goes here...</p>;
+        return <BookPoll />;
       case "announcements":
         return <p>Club announcements go here...</p>;
       case "photos":
