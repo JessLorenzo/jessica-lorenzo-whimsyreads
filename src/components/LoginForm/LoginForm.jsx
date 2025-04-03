@@ -1,15 +1,23 @@
 import "./LoginForm.scss";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export default function LoginForm() {
+  const location = useLocation();
   const isLoginpage = location.pathname === "/login";
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    first_name: "",
+    last_name: "",
   });
+
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,16 +27,36 @@ export default function LoginForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(
-      isLoginpage ? "Logging in with:" : "Signing up with:",
-      formData
-    );
-    // Add API call or auth logic here
+    setMessage("");
 
-    if (!isLoginpage) {
-      navigate("/editprofile");
+    if (isLoginpage) {
+      try {
+        const res = await axios.post(`${baseUrl}/api/users/login`, {
+          email: formData.email,
+          password: formData.password,
+        });
+        setMessage("Login successful!");
+        navigate("/bookclub-profile");
+      } catch (err) {
+        console.error("Login error:", err);
+        setMessage(
+          err.response?.data?.message || "Login failed. Please try again."
+        );
+      }
+    } else {
+      try {
+        const res = await axios.post(`${baseUrl}/api/users/signup`, formData);
+        setMessage("Signup successful!");
+        navigate("/editprofile");
+      } catch (err) {
+        console.error("Signup error:", err);
+        setMessage(
+          err.response?.data?.message ||
+            "Something went wrong. Please try again."
+        );
+      }
     }
   };
 
@@ -37,6 +65,30 @@ export default function LoginForm() {
       <h2 className="login-form__title">
         {isLoginpage ? "Welcome Back!" : "Create your account"}
       </h2>
+
+      {!isLoginpage && (
+        <>
+          <label htmlFor="first_name">First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            id="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
+          />
+
+          <label htmlFor="last_name">Last Name</label>
+          <input
+            type="text"
+            name="last_name"
+            id="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            required
+          />
+        </>
+      )}
 
       <label htmlFor="email">Email</label>
       <input
