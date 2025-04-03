@@ -1,5 +1,4 @@
 import "./ProfileHeader.scss";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import shareIcon from "../../assets/icons/share.png";
 

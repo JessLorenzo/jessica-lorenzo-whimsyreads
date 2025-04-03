@@ -9,7 +9,7 @@ export default function EditProfileForm() {
     clubName: "",
     location: "",
     meetingType: "In-Person",
-    chapters: "",
+    chapters: "1",
     frequency: "Monthly",
     description: "",
     visibility: "Public",
@@ -132,10 +132,12 @@ export default function EditProfileForm() {
         <option>Virtual</option>
       </select>
 
+      <label className="edit-profile-form__label" htmlFor="chapterNumber">
+        Number of sub-groups/chapters (if applicable)
+      </label>
       <input
         type="number"
         name="chapters"
-        placeholder="Number of Chapters"
         value={formData.chapters}
         onChange={handleChange}
         required
