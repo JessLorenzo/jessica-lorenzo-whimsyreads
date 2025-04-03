@@ -1,6 +1,7 @@
 import "./ProfileHeader.scss";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import shareIcon from "../../assets/icons/share.png";
 
 export default function ProfileHeader({ profile }) {
   const navigate = useNavigate();
@@ -31,9 +32,25 @@ export default function ProfileHeader({ profile }) {
       <p className="club-header__description">{profile.description}</p>
 
       <div className="club-header__actions">
-        <button onClick={() => navigate("/members")}>View Members</button>
-        <button onClick={() => navigate("/edit-profile")}>Edit Profile</button>
-        <button onClick={handleShare}>Share</button>
+        <button
+          onClick={() => navigate("/members")}
+          className="club-header__button"
+        >
+          View Members
+        </button>
+        <button
+          onClick={() => navigate("/editprofile")}
+          className="club-header__button"
+        >
+          Edit Profile
+        </button>
+        <button
+          onClick={handleShare}
+          className="club-header__icon-button"
+          aria-label="Share"
+        >
+          <img src={shareIcon} alt="Share" />
+        </button>
       </div>
     </div>
   );

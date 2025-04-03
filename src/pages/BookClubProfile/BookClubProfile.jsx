@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader.jsx";
 import "./BookClubProfile.scss";
-import ProfilePhoto from "../../assets/image/bookclub_photo.png";
+import profilePhoto from "../../assets/image/bookclub_photo.png";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 
 export default function BookClubProfile() {
   const [activeTab, setActiveTab] = useState("chapters");
-
   const profile = {
-    profilePhoto: { ProfilePhoto },
+    profilePhoto: profilePhoto,
     name: "The Literary Book Coven",
     createdAt: "March 2024",
     location: "Miami, FL",
@@ -33,7 +32,7 @@ export default function BookClubProfile() {
   };
 
   return (
-    <>
+    <div className="body">
       <Navbar />
       <div className="club-profile">
         <ProfileHeader profile={profile} />
@@ -53,6 +52,6 @@ export default function BookClubProfile() {
           <div className="tab-content">{renderTabContent()}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

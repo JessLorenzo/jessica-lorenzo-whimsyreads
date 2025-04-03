@@ -1,7 +1,22 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
+@use "sass:color";
 
+.body {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    to bottom right,
+    adjust($profile-nude, 20%) 0%,
+    $white 60%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .club-profile {
   max-width: 800px;
   margin: 2rem auto;
@@ -33,11 +48,6 @@
 
         &:hover {
           color: $profile-purple2;
-        }
-
-        &:focus {
-          outline: 2px solid $profile-blue;
-          outline-offset: 2px;
         }
       }
     }
