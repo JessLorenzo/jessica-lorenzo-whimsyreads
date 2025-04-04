@@ -72,7 +72,7 @@ export default function EditProfileForm({ userData }) {
 
     setErrors({});
     console.log("Profile Submitted:", formData);
-    // Submit the form data to your backend here
+    // Backend logic will go here to submit the data to my database
   };
   if (!formData) return <p>Loading profile...</p>;
 
@@ -145,17 +145,6 @@ export default function EditProfileForm({ userData }) {
         <option>Hybrid</option>
         <option>Virtual</option>
       </select>
-
-      <label className="edit-profile-form__label" htmlFor="chapterNumber">
-        Number of sub-groups/chapters (if applicable)
-      </label>
-      <input
-        type="number"
-        name="chapters"
-        value={formData.chapters}
-        onChange={handleChange}
-        required
-      />
 
       <label className="edit-profile-form__label" htmlFor="meetingFrequency">
         Meeting Frequency:

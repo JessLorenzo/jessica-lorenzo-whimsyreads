@@ -8,7 +8,7 @@ const baseUrl = import.meta.env.VITE_API_URL;
 
 export default function LoginForm() {
   const location = useLocation();
-  const isLoginpage = location.pathname === "/login";
+  const isLoginpage = location.pathname.toLowerCase() === "/login";
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

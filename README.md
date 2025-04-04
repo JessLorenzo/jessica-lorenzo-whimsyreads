@@ -28,20 +28,16 @@ List the functionality that your app will include. These can be written as user 
 
 MUST HAVES: Book Club Organizers/Admins User Story
 Can create and manage a book club profile, including name, description, visibility (public/private), and meeting format (in-person or virtual).
-Can create chapters within their book club to divide members into smaller groups for more focused discussions or local meetups.
-Can approve or deny membership requests for private clubs.
-Can assign new members to a chapter automatically or manually upon approval.
 Can share and update the monthly book pick.
 Can schedule and announce meetings/events, including date, time, location, and format.
 Can create polls for members to vote on the next book selection.
-Can facilitate discussions by starting and moderating conversation threads—both at the club and chapter level.
-Can post updates or announcements to the club or specific chapters.
+Can facilitate discussions by starting and moderating conversation threads.
+Can post updates or announcements for the club.
 Can upload photos from events or manage shared media.
 
 Minimum Viable Product (MVP):
 Homepage with sign up/login
-Admin Dashboard / Organizer View
-Chapter creation & member assignment (probably mocked)
+Admin Dashboard / Edit Profile View
 Book selection
 Display event date/location
 Poll creation
@@ -124,32 +120,26 @@ Goodreads API (specifically Goodreads-API-Node)
 
 List the pages of your app with brief descriptions. You can show this visually, or write it out.
 
-🏠 Home / Landing Page
+Home / Landing Page
 Intro to Whimsy Reads with options to log in or sign up.
 
-🔐 Login Page / Authentication for Club Organizers
+Login Page / Authentication for Club Organizers
 
-🔐 Sign-Up Page / Account creation for Club Organizer.
+Sign-Up Page / Account creation for Club Organizer.
 
-👤 Organizer Dashboard
-View and manage your book club profile, access club settings, and create/manage chapters.
-
-⚙️ Admin Settings Page
+Admin Settings Page
 Assign admin roles, edit club details, and manage chapter and member assignments.
 
-📚 Book Club Profile Page
+Book Club Profile Page
 Displays overall club details, list of chapters, member overview, announcements, and access to chapter-filtered events and polls.
 
-🧩 Chapters Page
-Display and manage all chapters, assign members to groups, and link to each chapter’s Book of the Month, polls, and events.
-
-📖 Chapter – Book of the Month Page
+Book of the Month Page
 Each chapter can feature its own monthly pick, using data from the Google Books API.
 
-📊 Chapter – Polls Page
+Polls Page
 Create and manage polls for chapter members to vote on upcoming reads.
 
-📅 Events Page
+Events Page
 Create and manage events at both the club and chapter levels.
 
 Site Map:
@@ -162,12 +152,9 @@ v
 [Organizer Dashboard]
 |
 ├──> [Book Club Profile Page]
-| ├──> [Chapters Page]
-| | ├──> [Chapter: Book of the Month]
-| | ├──> [Chapter: Polls]
-| | └──> [Chapter: Events]
-| |
-| └──> [Club-Level Events Page]
+| | ├──> [Book of the Month]
+| | ├──> [Polls]
+| | └──> [Events]
 |
 └──> [Admin Settings Page]
 
@@ -185,37 +172,34 @@ Data Model
 
 User:
 Users can be club organizers or members.
-Each user can belong to one or more Chapters via Memberships.
 Organizers may have elevated permissions via is_admin.
 
 Book Club:
-A top-level container created by an organizer.
-Contains multiple Chapters and Announcements.
-
-Chapter (subgroup within a book club):
-Each chapter has:
+A top-level container created by an organizer
+Will display:
+Announcements
 A Book of the Month
 Its own Polls
 Events specific to that group
 A list of members via memberships
 
 Book:
-Selected by a chapter as its current read.
-Includes title, author, description, and rating.
+Selected by the book club as its current read.
+Includes title, author, and genre.
 Pulled from an external source (like Google Books API).
 
 Poll:
-Created within a chapter to vote on the next book.
+Created to vote on the next book.
 Contains multiple book options.
 
 Meeting Events:
-Can be associated with a chapter (for meetups, discussions, etc.).
+Monthly meetups, discussions, etc.
 Includes title, date, and location (in-person or virtual).
 
 Announcements:
 Created at the BookClub level to share updates with all members.
 
-Membership:
+IF POSSIBLE- For Membership:
 Connects users to chapters.
 Tracks user role (e.g., is_admin), and helps manage chapter assignments.
 
@@ -238,54 +222,6 @@ Example Response:
 "id": "1",
 "name": "Whimsical Readers",
 "chapters": [{ "id": "ch1", "name": "Chapter 1" }]
-}
-
-🧩 Chapters
-POST /api/chapters
-Create a new chapter in a club
-Body: { clubId, name, description }
-Example Response:
-{ "id": "ch1", "name": "Chapter 1", "clubId": "1" }
-
-GET /api/chapters/:id
-Get a single chapter with its book, polls, members, and events
-Example Response:
-{
-"id": "ch1",
-"name": "Chapter One: Cozy Classics",
-"description": "Readers who love timeless tales",
-"bookOfTheMonth": {
-"title": "Pride and Prejudice",
-"author": "Jane Austen",
-"rating": 4.6
-},
-"polls": [
-{
-"id": "poll1",
-"question": "What should we read next?",
-"options": ["Emma", "Little Women", "Jane Eyre"]
-}
-],
-"events": [
-{
-"id": "evt1",
-"title": "April Meetup",
-"date": "2025-04-10",
-"location": "Zoom"
-}
-],
-"members": [
-{
-"id": "u123",
-"name": "Ava",
-"isAdmin": true
-},
-{
-"id": "u456",
-"name": "Liam",
-"isAdmin": false
-}
-]
 }
 
 📖 Book of the Month
@@ -396,7 +332,13 @@ Deploy the app
 
 Your project will be marked based on what you committed to in the above document. Here, you can list any additional features you may complete after the MVP of your application is built, or if you have extra time before the Capstone due date.
 
-LIKE-TO-HAVES: Club Members User Story
+LIKE-TO-HAVES:
+Admin Additional Features
+Can create chapters within their book club to divide members into smaller groups for more focused discussions or local meetups.
+Can approve or deny membership requests for private clubs.
+Can assign new members to a chapter automatically or manually upon approval.
+
+Club Members User Story
 Can create a personalized user profile with favorite genres, a bio, and displays the book clubs they have joined.
 Can browse and request to join public or private book clubs.
 Are automatically assigned to a chapter upon joining a book club (with possible updates by organizers).
@@ -409,6 +351,7 @@ Can upload photos from events and view shared media from others.
 Can receive notifications for club or chapter activities, replies, and announcements.
 
 Future Additions:
+Chapters & separation of BOTM and meetings per Chapters (or subgroups)
 Member accounts & login
 Voting
 Discussions
