@@ -1,0 +1,49 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.site-footer {
+  background-color: transparent;
+  color: #555;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__tagline {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: $profile-blue;
+  }
+
+  &__legal {
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: #777;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    a {
+      color: $profile-purple;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      color: #aaa;
+    }
+  }
+}

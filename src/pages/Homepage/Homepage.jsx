@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar.jsx";
 import Button from "../../components/Button/Button.jsx";
 import BookImage from "../../assets/image/hand-book.png";
 import BookWindowImage from "../../assets/image/book-windows.png";
+import Footer from "../../components/Footer/Footer.jsx";
 
 function Homepage() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function Homepage() {
             className="main__description-image"
           />
         </section>
+        <Footer />
       </main>
     </>
   );

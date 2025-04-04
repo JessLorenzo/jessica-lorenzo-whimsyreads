@@ -4,6 +4,7 @@ import "./BookClubProfile.scss";
 import profilePhoto from "../../assets/image/bookclub_photo.png";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import BookPoll from "../../components/BookPoll/BookPoll.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 export default function BookClubProfile() {
   const [activeTab, setActiveTab] = useState("chapters");
@@ -53,6 +54,7 @@ export default function BookClubProfile() {
           <div className="club-profile__tab-content">{renderTabContent()}</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

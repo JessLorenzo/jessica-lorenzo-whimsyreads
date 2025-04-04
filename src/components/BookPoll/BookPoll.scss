@@ -60,15 +60,19 @@
     border: none;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
-    border-radius: 6px;
+    border-radius: 20px;
     cursor: pointer;
+
+    &:hover {
+      background-color: $profile-purple;
+    }
   }
 }
 
 .book-poll__chart {
   margin-top: 3rem;
   padding: 1rem;
-  background: rgba(#f5f5f5, 0.8);
+  background: rgba(#ffffff, 0.5);
   border-radius: 12px;
 }
 

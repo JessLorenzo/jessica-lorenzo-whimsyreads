@@ -12,9 +12,9 @@ import axios from "axios";
 import "./BookPoll.scss";
 
 const booksToSearch = [
-  { title: "The Night Circus", author: "Erin Morgenstern" },
-  { title: "The Midnight Library", author: "Matt Haig" },
-  { title: "Circe", author: "Madeline Miller" },
+  { title: "Fourth Wing", author: "Rebecca Yarros" },
+  { title: "Wild Love", author: "Elsie Silver" },
+  { title: "Divine Rivals", author: "Rebecca Ross" },
 ];
 
 export default function BookPoll() {

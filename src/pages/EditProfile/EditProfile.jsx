@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import EditProfileForm from "../../components/EditProfileForm/EditProfileForm.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -34,6 +35,7 @@ export default function EditProfile() {
     <div className="edit-profile">
       <Navbar />
       <EditProfileForm userData={userData} />
+      <Footer />
     </div>
   );
 }
