@@ -24,7 +24,7 @@ export default function SignupPage() {
       const userId = res.data.user_id;
       const bookClubId = res.data.book_club_id;
       localStorage.setItem("userId", userId);
-      navigate(`/editprofile/${bookClubId}`);
+      navigate(`/createprofile/${bookClubId}`);
     } catch (err) {
       console.error("Signup failed", err);
     }

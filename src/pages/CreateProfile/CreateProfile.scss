@@ -1,0 +1,20 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.create-profile {
+  background-size: cover;
+  background: linear-gradient(
+    180deg,
+    color.adjust($dark-purple, $lightness: 15%) 0%,
+    color.adjust($purple, $lightness: 10%) 33%,
+    color.adjust($light-orange, $lightness: 10%) 66%,
+    color.adjust($dark-orange, $lightness: 15%) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: lighten;
+  min-height: 100vh;
+  padding-top: 10rem;
+}

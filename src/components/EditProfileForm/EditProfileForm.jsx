@@ -2,7 +2,7 @@ import "./EditProfileForm.scss";
 import { useState, useEffect } from "react";
 import Button from "../Button/Button.jsx";
 
-export default function EditProfileForm({ userData }) {
+export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
   const [formData, setFormData] = useState(null);
   const [errors, setErrors] = useState({});
 
@@ -71,8 +71,7 @@ export default function EditProfileForm({ userData }) {
     }
 
     setErrors({});
-    console.log("Profile Submitted:", formData);
-    // Backend logic will go here to submit the data to my database
+    onSubmit(formData);
   };
   if (!formData) return <p>Loading profile...</p>;
 
