@@ -9,7 +9,7 @@
 
   &__title {
     font-size: 1.5rem;
-    color: white;
+    color: $profile-purple2;
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -63,4 +63,17 @@
     border-radius: 6px;
     cursor: pointer;
   }
+}
+
+.book-poll__chart {
+  margin-top: 3rem;
+  padding: 1rem;
+  background: rgba(#f5f5f5, 0.8);
+  border-radius: 12px;
+}
+
+.book-poll__chart-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: $profile-purple;
 }

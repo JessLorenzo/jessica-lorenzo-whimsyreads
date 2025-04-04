@@ -1,4 +1,13 @@
 import { useEffect, useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 import axios from "axios";
 import "./BookPoll.scss";
 
@@ -11,6 +20,9 @@ const booksToSearch = [
 export default function BookPoll() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showChart, setShowChart] = useState(false);
+  const [hasVoted, setHasVoted] = useState(false);
+  const [votes, setVotes] = useState({});
 
   async function fetchBookData(title, author) {
     try {
@@ -50,7 +62,19 @@ export default function BookPoll() {
         booksToSearch.map((book) => fetchBookData(book.title, book.author))
       );
 
-      setBooks(fetchedBooks.filter(Boolean));
+      const cleanedBooks = fetchedBooks.filter(Boolean);
+
+      const initialVotes = {};
+      cleanedBooks.forEach((book) => {
+        initialVotes[book.id] = 0;
+      });
+      const votedBookId = localStorage.getItem("votedBookId");
+      if (votedBookId) {
+        setHasVoted(true);
+        setShowChart(true);
+      }
+      setBooks(cleanedBooks);
+      setVotes(initialVotes);
       setLoading(false);
     };
 
@@ -58,41 +82,79 @@ export default function BookPoll() {
   }, []);
 
   if (loading) return <p>Loading books...</p>;
-  if (!loading && books.length === 0)
-    return <p>No books found for this month.</p>;
+
+  const handleVote = (bookId) => {
+    if (hasVoted) return;
+
+    setVotes((prevVotes) => {
+      const updated = {
+        ...prevVotes,
+        [bookId]: prevVotes[bookId] + 1,
+      };
+      localStorage.setItem("votedBookId", bookId);
+      setHasVoted(true);
+      setShowChart(true);
+      return updated;
+    });
+  };
+
+  const voteData = books.map((book) => ({
+    name: book.title,
+    votes: votes[book.id] || 0,
+  }));
 
   return (
     <div className="book-poll">
       <h2 className="book-poll__title">Vote for Book of the Month</h2>
-      <div className="book-poll__list">
-        {books.map((book, index) => (
-          <div key={book.id || index} className="book-poll__card">
-            {book.image && (
-              <img
-                src={book.image}
-                alt={`Cover of ${book.title} by ${book.authors}`}
-                className="book-poll__image"
-              />
-            )}
-            <div className="book-poll__info">
-              <h3>{book.title}</h3>
-              <p>
-                <strong>Author:</strong> {book.authors}
-              </p>
-              <p className="book-poll__genre">
-                <strong>Genre:</strong> {book.genre ?? "N/A"}
-              </p>
 
-              <button
-                className="book-poll__vote-button"
-                onClick={() => console.log(`Voted for: ${book.title}`)}
-              >
-                Vote
-              </button>
+      {!hasVoted && (
+        <div className="book-poll__list">
+          {books.map((book) => (
+            <div key={book.id} className="book-poll__card">
+              {book.image && (
+                <img
+                  src={book.image}
+                  alt={`Cover of ${book.title} by ${book.authors}`}
+                  className="book-poll__image"
+                />
+              )}
+              <div className="book-poll__info">
+                <h3>{book.title}</h3>
+                <p>
+                  <strong>Author:</strong> {book.authors}
+                </p>
+                <p>
+                  <strong>Rating:</strong> {book.rating ?? "N/A"}
+                </p>
+                <p className="book-poll__genre">
+                  <strong>Genre:</strong> {book.genre ?? "N/A"}
+                </p>
+                <button
+                  className="book-poll__vote-button"
+                  onClick={() => handleVote(book.id)}
+                >
+                  Vote
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+
+      {showChart && (
+        <div className="book-poll__chart">
+          <h3 className="book-poll__chart-title">Current Results</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={voteData} layout="vertical" margin={{ left: 50 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" allowDecimals={false} />
+              <YAxis dataKey="name" type="category" width={150} />
+              <Tooltip />
+              <Bar dataKey="votes" fill="#7d206f" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </div>
   );
 }

@@ -38,8 +38,8 @@ export default function BookClubProfile() {
       <Navbar />
       <div className="club-profile">
         <ProfileHeader profile={profile} />
-        <div className="club-tabs">
-          <nav className="tabs">
+        <div className="club-profile__tabs-container">
+          <nav className="club-profile__tabs">
             {["polls", "announcements", "photos", "events"].map((tab) => (
               <button
                 key={tab}
@@ -50,7 +50,7 @@ export default function BookClubProfile() {
               </button>
             ))}
           </nav>
-          <div className="tab-content">{renderTabContent()}</div>
+          <div className="club-profile__tab-content">{renderTabContent()}</div>
         </div>
       </div>
     </div>

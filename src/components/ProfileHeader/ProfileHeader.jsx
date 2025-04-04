@@ -19,15 +19,23 @@ export default function ProfileHeader({ profile }) {
 
   return (
     <div className="club-header">
-      <img
-        src={profile.profilePhoto}
-        alt="Book Club"
-        className="club-header__photo"
-      />
-      <h1 className="club-header__title">{profile.name}</h1>
-      <p className="club-header__subtitles">Created: {profile.createdAt}</p>
-      <p className="club-header__subtitles">Location: {profile.location}</p>
-      <p className="club-header__subtitles">Creator: {profile.creator}</p>
+      <div className="club-header__title-container">
+        <img
+          src={profile.profilePhoto}
+          alt="Book Club"
+          className="club-header__photo"
+        />
+        <h1 className="club-header__title">{profile.name}</h1>
+      </div>
+      <p className="club-header__subtitles">
+        <strong>Created:</strong> {profile.createdAt}
+      </p>
+      <p className="club-header__subtitles">
+        <strong>Location:</strong> {profile.location}
+      </p>
+      <p className="club-header__subtitles">
+        <strong>Moderator:</strong> {profile.creator}
+      </p>
       <p className="club-header__description">{profile.description}</p>
 
       <div className="club-header__actions">
