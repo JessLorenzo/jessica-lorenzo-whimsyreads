@@ -46,7 +46,7 @@ export default function ProfileHeader({ profile }) {
           View Members
         </button>
         <button
-          onClick={() => navigate("/editprofile")}
+          onClick={() => navigate("/editprofile/:book_club_id")}
           className="club-header__button"
         >
           Edit Profile

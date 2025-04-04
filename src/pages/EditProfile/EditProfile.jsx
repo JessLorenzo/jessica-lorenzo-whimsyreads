@@ -1,5 +1,6 @@
 import "./EditProfile.scss";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditProfileForm from "../../components/EditProfileForm/EditProfileForm.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
@@ -9,6 +10,7 @@ const baseUrl = import.meta.env.VITE_API_URL;
 
 export default function EditProfile() {
   const [userData, setUserData] = useState(null);
+  const { bookClubId } = useParams();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -27,14 +29,14 @@ export default function EditProfile() {
     if (userId) {
       fetchUser();
     }
-  }, []);
+  }, [bookClubId]);
 
   if (!userData) return <p>Loading profile...</p>;
 
   return (
     <div className="edit-profile">
       <Navbar />
-      <EditProfileForm userData={userData} />
+      <EditProfileForm userData={userData} bookClubId={bookClubId} />
       <Footer />
     </div>
   );

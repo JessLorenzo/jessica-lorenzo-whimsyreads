@@ -1,24 +1,14 @@
 import "./LoginForm.scss";
-import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../Button/Button.jsx";
 
-const baseUrl = import.meta.env.VITE_API_URL;
-
-export default function LoginForm() {
+export default function LoginForm({
+  formData,
+  setFormData,
+  onSubmit,
+  isSignup,
+}) {
   const location = useLocation();
-  const isLoginpage = location.pathname.toLowerCase() === "/login";
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    first_name: "",
-    last_name: "",
-  });
-
-  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,49 +18,13 @@ export default function LoginForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("");
-
-    if (isLoginpage) {
-      try {
-        const res = await axios.post(`${baseUrl}/api/users/login`, {
-          email: formData.email,
-          password: formData.password,
-        });
-        setMessage("Login successful!");
-        navigate("/bookclub-profile");
-      } catch (err) {
-        console.error("Login error:", err);
-        setMessage(
-          err.response?.data?.message || "Login failed. Please try again."
-        );
-      }
-    } else {
-      try {
-        const res = await axios.post(`${baseUrl}/api/users/signup`, formData);
-        const userId = res.data.user_id;
-        localStorage.setItem("userId", userId);
-        console.log("Saved user ID to localStorage:", userId);
-        setMessage("Signup successful!");
-        navigate("/editprofile");
-      } catch (err) {
-        console.error("Signup error:", err);
-        setMessage(
-          err.response?.data?.message ||
-            "Something went wrong. Please try again."
-        );
-      }
-    }
-  };
-
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={onSubmit}>
       <h2 className="login-form__title">
-        {isLoginpage ? "Welcome Back!" : "Create your account"}
+        {isSignup ? "Create your account" : "Welcome Back!"}
       </h2>
 
-      {!isLoginpage && (
+      {isSignup && (
         <>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -113,18 +67,17 @@ export default function LoginForm() {
         onChange={handleChange}
         required
       />
+
       <div className="login-form__button">
-        <Button type="submit">{isLoginpage ? "Log In" : "Sign Up"}</Button>
+        <Button type="submit">{isSignup ? "Sign Up" : "Log In"}</Button>
       </div>
+
       <div className="login-form__signup">
         <p>
-          {isLoginpage ? "Don't have an account?" : "Already have an account?"}
+          {isSignup ? "Already have an account?" : "Don't have an account?"}
         </p>
-        <Link
-          to={isLoginpage ? "/signup" : "/login"}
-          className="login-form__link"
-        >
-          {isLoginpage ? "Sign up" : "Login"}
+        <Link to={isSignup ? "/login" : "/signup"} className="login-form__link">
+          {isSignup ? "Login" : "Sign up"}
         </Link>
       </div>
     </form>
