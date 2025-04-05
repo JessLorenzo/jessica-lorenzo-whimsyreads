@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.event-list {
+  padding: 1rem;
+
+  &__heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.event-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__info {
+    font-size: 0.95rem;
+    margin: 0.3rem 0;
+    color: #444;
+  }
+}
