@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader.jsx";
 import "./BookClubProfile.scss";
-import profilePhoto from "../../assets/image/bookclub_photo.png";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import BookPoll from "../../components/BookPoll/BookPoll.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
+const baseUrl = import.meta.env.VITE_API_URL;
+
 export default function BookClubProfile() {
-  const [activeTab, setActiveTab] = useState("chapters");
-  const profile = {
-    profilePhoto: profilePhoto,
-    name: "The Literary Book Coven",
-    createdAt: "March 2024",
-    location: "Miami, FL",
-    creator: "Jessica Lorenzo",
-    description:
-      "Welcome to The Literary Book Coven! We are a cozy, creative book club for lovers of fantasy, fiction, and deep conversations over wine!",
-  };
+  const { bookClubId } = useParams();
+  const [activeTab, setActiveTab] = useState("polls");
+  const [bookClub, setBookClub] = useState(null);
+
+  useEffect(() => {
+    const fetchBookClub = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/api/bookclubs/${bookClubId}`);
+        const { profilePhoto, ...rest } = res.data;
+        setBookClub(rest);
+      } catch (err) {
+        console.error("Failed to fetch book club", err);
+      }
+    };
+
+    fetchBookClub();
+  }, [bookClubId]);
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -33,12 +43,13 @@ export default function BookClubProfile() {
         return null;
     }
   };
+  if (!bookClub) return <p>Loading club profile...</p>;
 
   return (
     <div className="body">
       <Navbar />
       <div className="club-profile">
-        <ProfileHeader profile={profile} />
+        <ProfileHeader profile={bookClub} />
         <div className="club-profile__tabs-container">
           <nav className="club-profile__tabs">
             {["polls", "announcements", "photos", "events"].map((tab) => (

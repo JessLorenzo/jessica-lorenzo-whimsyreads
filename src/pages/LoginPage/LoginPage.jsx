@@ -19,7 +19,7 @@ export default function LoginPage() {
         email: formData.email,
         password: formData.password,
       });
-      localStorage.setItem("userId", res.data.user_id);
+      localStorage.setItem("userId", res.data.userId);
       // todo: fix login
       navigate("/bookclub-profile/:book_club_id");
     } catch (err) {

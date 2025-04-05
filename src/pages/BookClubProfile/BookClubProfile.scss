@@ -10,10 +10,13 @@
   flex-direction: column;
 }
 .club-profile {
-  max-width: 800px;
+  min-width: 95%;
   margin: 2rem auto;
-  padding: 2rem;
   padding-top: 8rem;
+
+  @include tablet {
+    min-width: 800px;
+  }
 
   &__tabs-container {
     margin-top: 2rem;

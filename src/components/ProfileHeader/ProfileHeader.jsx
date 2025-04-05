@@ -1,9 +1,11 @@
 import "./ProfileHeader.scss";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import shareIcon from "../../assets/icons/share.png";
+import defaultClubImage from "../../assets/icons/book-stack.png";
 
 export default function ProfileHeader({ profile }) {
   const navigate = useNavigate();
+  const { bookClubId } = useParams();
 
   const handleShare = () => {
     if (navigator.share) {
@@ -21,33 +23,39 @@ export default function ProfileHeader({ profile }) {
     <div className="club-header">
       <div className="club-header__title-container">
         <img
-          src={profile.profilePhoto}
+          src={profile.profilePhoto || defaultClubImage}
           alt="Book Club"
           className="club-header__photo"
         />
         <h1 className="club-header__title">{profile.name}</h1>
       </div>
       <p className="club-header__subtitles">
-        <strong>Created:</strong> {profile.createdAt}
+        <strong>Created:</strong>{" "}
+        {new Date(profile.createdAt).toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+        })}
       </p>
       <p className="club-header__subtitles">
         <strong>Location:</strong> {profile.location}
       </p>
       <p className="club-header__subtitles">
-        <strong>Moderator:</strong> {profile.creator}
+        <strong>Meeting Type:</strong> {profile.meetingType}
+      </p>
+      <p className="club-header__subtitles">
+        <strong>Meeting Frequency:</strong> {profile.meetingFrequency}
+      </p>
+      <p className="club-header__subtitles">
+        <strong>Follow Us:</strong> {profile.socialLink}
       </p>
       <p className="club-header__description">{profile.description}</p>
 
       <div className="club-header__actions">
-        <button
-          onClick={() => navigate("/members")}
-          className="club-header__button"
-        >
+        <button onClick={() => navigate("#")} className="club-header__button">
           View Members
         </button>
         <button
-          // todo: fix navigate path
-          onClick={() => navigate("/editprofile/:book_club_id")}
+          onClick={() => navigate(`/editprofile/${bookClubId}`)}
           className="club-header__button"
         >
           Edit Profile

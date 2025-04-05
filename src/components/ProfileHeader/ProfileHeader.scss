@@ -6,6 +6,10 @@
   padding: 2rem;
   text-align: start;
   font-family: "Urbanist";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 
   &__title-container {
     display: flex;
