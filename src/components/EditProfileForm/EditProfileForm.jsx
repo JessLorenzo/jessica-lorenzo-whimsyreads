@@ -15,13 +15,10 @@ export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
         clubName: "",
         location: "",
         meetingType: "In-Person",
-        chapters: "1",
         frequency: "Monthly",
         description: "",
-        visibility: "Public",
-        genres: [],
         website: "",
-        profilePhoto: null,
+        visibility: "Public",
       });
     }
   }, [userData]);
@@ -71,6 +68,7 @@ export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
     }
 
     setErrors({});
+    console.log("formData2", formData);
     onSubmit(formData);
   };
   if (!formData) return <p>Loading profile...</p>;
@@ -170,16 +168,6 @@ export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
         type="url"
         name="website"
         placeholder="Social Media or Website (optional)"
-        onChange={handleChange}
-      />
-
-      <label className="edit-profile-form__label" htmlFor="uploadPhoto">
-        Upload Profile Photo:
-      </label>
-      <input
-        type="file"
-        name="profilePhoto"
-        accept="image/*"
         onChange={handleChange}
       />
 

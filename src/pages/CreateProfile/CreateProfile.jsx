@@ -31,33 +31,17 @@ export default function CreateProfile() {
   }, [bookClubId]);
 
   const handleSubmit = async (formData) => {
+    console.log("formData3", formData);
     const userId = localStorage.getItem("userId");
-    const postData = new FormData();
-
-    postData.append("user_id", userId);
-    postData.append("book_club_id", bookClubId);
-    postData.append("first_name", formData.firstName);
-    postData.append("last_name", formData.lastName);
-    postData.append("email", formData.email);
-    postData.append("club_name", formData.clubName);
-    postData.append("location", formData.location);
-    postData.append("meeting_type", formData.meetingType);
-    postData.append("frequency", formData.frequency);
-    postData.append("description", formData.description);
-    postData.append("visibility", formData.visibility);
-    postData.append("website", formData.website);
-
-    if (formData.profilePhoto) {
-      postData.append("profile_photo", formData.profilePhoto);
-    }
+    const dataToSend = {
+      ...formData,
+      userId,
+      bookClubId,
+    };
 
     try {
-      await axios.post(`${baseUrl}/api/bookclubs/profile`, postData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
+      console.log("datatosend", dataToSend);
+      await axios.post(`${baseUrl}/api/bookclubs/profile`, dataToSend);
       navigate(`/bookclub-profile/${bookClubId}`);
     } catch (err) {
       console.error("Failed to save book club profile", err);
