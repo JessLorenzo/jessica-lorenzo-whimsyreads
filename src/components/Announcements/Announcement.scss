@@ -1,0 +1,40 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "sass:color";
+
+.announcement {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  font-family: "Urbanist", sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  &__actions {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 1rem;
+
+    button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: not-allowed;
+      color: #999;
+    }
+  }
+}
+
+h2 {
+  font-family: "Urbanist", sans-serif;
+  padding: 1rem;
+  color: $profile-purple;
+}

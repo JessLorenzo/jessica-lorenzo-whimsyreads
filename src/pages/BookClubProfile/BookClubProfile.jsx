@@ -5,6 +5,7 @@ import ProfileHeader from "../../components/ProfileHeader/ProfileHeader.jsx";
 import "./BookClubProfile.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import BookPoll from "../../components/BookPoll/BookPoll.jsx";
+import AnnouncementsList from "../../components/Announcements/AnnouncementsList.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
 const baseUrl = import.meta.env.VITE_API_URL;
@@ -33,7 +34,7 @@ export default function BookClubProfile() {
       case "polls":
         return <BookPoll />;
       case "announcements":
-        return <p>Club announcements go here...</p>;
+        return <AnnouncementsList />;
       case "photos":
         return <p>Photo gallery coming soon...</p>;
       case "events":
