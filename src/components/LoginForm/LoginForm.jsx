@@ -26,22 +26,22 @@ export default function LoginForm({
 
       {isSignup && (
         <>
-          <label htmlFor="first_name">First Name</label>
+          <label htmlFor="first-name">First Name</label>
           <input
             type="text"
-            name="first_name"
-            id="first_name"
-            value={formData.first_name}
+            name="firstName"
+            id="first-name"
+            value={formData.firstName}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="last_name">Last Name</label>
+          <label htmlFor="last-name">Last Name</label>
           <input
             type="text"
-            name="last_name"
-            id="last_name"
-            value={formData.last_name}
+            name="lastName"
+            id="last-name"
+            value={formData.lastName}
             onChange={handleChange}
             required
           />

@@ -31,7 +31,6 @@ export default function CreateProfile() {
   }, [bookClubId]);
 
   const handleSubmit = async (formData) => {
-    console.log("formData3", formData);
     const userId = localStorage.getItem("userId");
     const dataToSend = {
       ...formData,
@@ -40,7 +39,6 @@ export default function CreateProfile() {
     };
 
     try {
-      console.log("datatosend", dataToSend);
       await axios.post(`${baseUrl}/api/bookclubs/profile`, dataToSend);
       navigate(`/bookclub-profile/${bookClubId}`);
     } catch (err) {

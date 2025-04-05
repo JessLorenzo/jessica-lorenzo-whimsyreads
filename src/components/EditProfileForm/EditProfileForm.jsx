@@ -9,8 +9,8 @@ export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
   useEffect(() => {
     if (userData) {
       setFormData({
-        firstName: userData.first_name || "",
-        lastName: userData.last_name || "",
+        firstName: userData.firstName || "",
+        lastName: userData.lastName || "",
         email: userData.email || "",
         clubName: "",
         location: "",
@@ -68,7 +68,6 @@ export default function EditProfileForm({ userData, bookClubId, onSubmit }) {
     }
 
     setErrors({});
-    console.log("formData2", formData);
     onSubmit(formData);
   };
   if (!formData) return <p>Loading profile...</p>;

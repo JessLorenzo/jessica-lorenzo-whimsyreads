@@ -13,16 +13,16 @@ export default function SignupPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
   });
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${baseUrl}/api/users/signup`, formData);
-      const userId = res.data.user_id;
-      const bookClubId = res.data.book_club_id;
+      const userId = res.data.userId;
+      const bookClubId = res.data.bookClubId;
       localStorage.setItem("userId", userId);
       navigate(`/createprofile/${bookClubId}`);
     } catch (err) {
