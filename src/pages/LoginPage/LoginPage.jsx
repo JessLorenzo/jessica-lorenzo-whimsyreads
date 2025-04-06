@@ -20,8 +20,14 @@ export default function LoginPage() {
         password: formData.password,
       });
       localStorage.setItem("userId", res.data.userId);
-      // todo: fix login
-      navigate("/bookclub-profile/:book_club_id");
+
+      const bookClubId = res.data.bookClubId;
+
+      if (bookClubId) {
+        navigate(`/bookclub-profile/${bookClubId}`);
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       console.error("Login failed", err);
     }
