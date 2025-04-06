@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader.jsx";
 import "./BookClubProfile.scss";
@@ -16,6 +16,13 @@ export default function BookClubProfile() {
   const { bookClubId } = useParams();
   const [activeTab, setActiveTab] = useState("polls");
   const [bookClub, setBookClub] = useState(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("bookClubId"); // if you store this too
+    navigate("/login");
+  };
 
   useEffect(() => {
     const fetchBookClub = async () => {
@@ -52,6 +59,9 @@ export default function BookClubProfile() {
     <div className="body">
       <Navbar />
       <div className="club-profile">
+        <button className="club-profile__logout-button" onClick={handleLogout}>
+          Log Out
+        </button>
         <ProfileHeader profile={bookClub} />
         <div className="club-profile__tabs-container">
           <nav className="club-profile__tabs">
