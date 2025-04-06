@@ -20,7 +20,7 @@ export default function BookClubProfile() {
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
-    localStorage.removeItem("bookClubId"); // if you store this too
+    localStorage.removeItem("bookClubId");
     navigate("/login");
   };
 
