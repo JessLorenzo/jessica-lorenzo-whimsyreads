@@ -9,6 +9,7 @@ import AnnouncementsList from "../../components/Announcements/AnnouncementsList.
 import PhotoGallery from "../../components/PhotoGallery/PhotoGallery.jsx";
 import EventList from "../../components/Events/EventList";
 import Footer from "../../components/Footer/Footer.jsx";
+import Reviews from "../../components/Reviews/Reviews.jsx";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -43,7 +44,7 @@ export default function BookClubProfile() {
       case "polls":
         return <BookPoll />;
       case "reviews":
-        return "book reviews will go here!";
+        return <Reviews />;
       case "announcements":
         return <AnnouncementsList />;
       case "photos":
