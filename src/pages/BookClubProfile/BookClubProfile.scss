@@ -84,4 +84,24 @@
     border-radius: 0 0 16px 16px;
     color: #333;
   }
+
+  &__tab-label {
+    display: inline-block;
+
+    .short {
+      display: inline;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    .full {
+      display: none;
+
+      @include tablet {
+        display: inline;
+      }
+    }
+  }
 }

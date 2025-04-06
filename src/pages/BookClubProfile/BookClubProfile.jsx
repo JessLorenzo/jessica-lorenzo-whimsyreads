@@ -42,6 +42,8 @@ export default function BookClubProfile() {
     switch (activeTab) {
       case "polls":
         return <BookPoll />;
+      case "reviews":
+        return "book reviews will go here!";
       case "announcements":
         return <AnnouncementsList />;
       case "photos":
@@ -65,15 +67,28 @@ export default function BookClubProfile() {
         <ProfileHeader profile={bookClub} />
         <div className="club-profile__tabs-container">
           <nav className="club-profile__tabs">
-            {["polls", "announcements", "photos", "events"].map((tab) => (
-              <button
-                key={tab}
-                className={activeTab === tab ? "active" : ""}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
+            {["polls", "reviews", "announcements", "photos", "events"].map(
+              (tab) => (
+                <button
+                  key={tab}
+                  className={activeTab === tab ? "active" : ""}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  <span
+                    className={`club-profile__tab-label club-profile__tab-label--${tab}`}
+                  >
+                    {tab === "announcements" ? (
+                      <>
+                        <span className="full">Announcements</span>
+                        <span className="short">Announ.</span>
+                      </>
+                    ) : (
+                      tab.charAt(0).toUpperCase() + tab.slice(1)
+                    )}
+                  </span>
+                </button>
+              )
+            )}
           </nav>
           <div className="club-profile__tab-content">{renderTabContent()}</div>
         </div>
