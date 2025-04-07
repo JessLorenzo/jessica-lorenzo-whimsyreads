@@ -6,8 +6,8 @@
 .announcement {
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 1.5rem;
+  margin: 1rem 2rem;
   border-radius: 8px;
   font-family: "Urbanist", sans-serif;
 
@@ -33,8 +33,10 @@
   }
 }
 
-h2 {
-  font-family: "Urbanist", sans-serif;
-  padding: 1rem;
-  color: $profile-purple;
+.announcements-list {
+  &__title {
+    font-family: "Urbanist", sans-serif;
+    padding: 1rem 3rem;
+    color: $profile-purple;
+  }
 }

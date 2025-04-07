@@ -4,21 +4,24 @@
 @use "sass:color";
 
 .event-list {
-  padding: 1rem;
+  // padding: 1.5rem;
   font-family: "Urbanist", sans-serif;
 
   &__heading {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem 3rem;
+    color: $profile-purple;
   }
 }
 
 .event-card {
   background-color: #fff;
   border: 1px solid #ddd;
+  padding: 1.5rem;
+  margin: 1rem 2rem;
   border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  font-family: "Urbanist", sans-serif;
 
   &__title {
     font-size: 1.2rem;

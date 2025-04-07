@@ -5,14 +5,14 @@ const mockEvents = [
   {
     id: 1,
     title: "April Book Club Meetup",
-    date: "2025-04-12T19:00:00",
-    location: "Jess's Apartment, Miami FL",
+    date: "2025-04-12T10:00:00",
+    location: "Neverland Coffee Bar, North Miami FL",
   },
   {
     id: 2,
-    title: "Author Talk: V.E. Schwab",
-    date: "2025-04-20T18:30:00",
-    location: "Virtual (Zoom link to come)",
+    title: "Author Talk: Jasmine Maas",
+    date: "2025-04-26T18:30:00",
+    location: "Books & Books - Coconut Grove",
   },
 ];
 

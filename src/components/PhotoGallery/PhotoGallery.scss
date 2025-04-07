@@ -4,12 +4,13 @@
 @use "sass:color";
 
 .photo-gallery {
-  padding: 1rem;
   font-family: "Urbanist", sans-serif;
 
   &__title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    padding: 1rem 3rem;
+    color: $profile-purple;
   }
 
   &__grid {
@@ -43,7 +44,7 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 20px;
     background-color: #ccc;
     color: #fff;
     cursor: not-allowed;
